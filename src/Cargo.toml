@@ -1,0 +1,7 @@
+[workspace]
+members = [
+	"builder",
+	"kernel",
+	"lib"
+]
+resolver="3"
