@@ -1,24 +1,21 @@
 OUTPUT_FORMAT(elf64-x86-64)
 ENTRY(_start)
 
-/* Tell the linker we want our kernel loaded in the higher half of memory */
 PHDRS
 {
-    headers PT_PHDR PHDRS;
-    requests PT_LOAD;
-    text PT_LOAD;
-    rodata PT_LOAD;
-    data PT_LOAD;
+    requests PT_LOAD FLAGS(6);
+    text PT_LOAD FLAGS(5);
+    rodata PT_LOAD FLAGS(4);
+    data PT_LOAD FLAGS(6);
 }
 
 SECTIONS
 {
-    /* Limine will load the kernel at this physical address, mapped to high virtual memory */
     . = 0xffffffff80000000;
 
-    /* This is the critical part: It guarantees your Limine requests are placed EXACTLY here */
-    /* Update this block to include the start and end markers */
+    . = ALIGN(8);
     .requests : {
+        KEEP(*(.limine_base_revision))
         KEEP(*(.requests_start_marker))
         KEEP(*(.requests))
         KEEP(*(.requests_end_marker))
@@ -32,11 +29,13 @@ SECTIONS
     . = ALIGN(0x1000);
     .rodata : {
         *(.rodata .rodata.*)
+        *(.data.rel.ro .data.rel.ro.*)
     } :rodata
 
     . = ALIGN(0x1000);
     .data : {
         *(.data .data.*)
+        *(.got .got.*)
     } :data
 
     . = ALIGN(0x1000);
@@ -44,8 +43,7 @@ SECTIONS
         *(COMMON)
         *(.bss .bss.*)
     } :data
-    
-    /* Discard standard unused sections */
+
     /DISCARD/ : {
         *(.eh_frame)
         *(.note .note.*)

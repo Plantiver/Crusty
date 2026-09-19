@@ -8,7 +8,7 @@ Based upon "Kernel - RustOs" tutorial, and many other things.
 
 # Roadmap
 - [X] Boot
-- [ ] Debug on screen
+- [X] Debug in terminal
 - [ ] Handle memory and interrupts
 - [ ] Make all the component, entity, and systems lib
 - [ ] Make a CLI
@@ -19,7 +19,6 @@ Based upon "Kernel - RustOs" tutorial, and many other things.
 - [ ] Get RickRolled
 
 # TODO
-- Update to use last limine version, instead of 7.0
 - Fix the readme to be cleaner
 
 # Design
