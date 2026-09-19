@@ -6,8 +6,21 @@ Uses an 'everything is an ecs entity' paradigm.
 
 Based upon "Kernel - RustOs" tutorial, and many other things.
 
+# Roadmap
+- [X] Boot
+- [ ] Debug on screen
+- [ ] Handle memory and interrupts
+- [ ] Make all the component, entity, and systems lib
+- [ ] Make a CLI
+- [ ] Make an ELF interpreter/compiler
+- [ ] Make a GUI
+- [ ] Run Doom
+- [ ] Run Bad Apple
+- [ ] Get RickRolled
+
 # TODO
-- update to use last limine version, instead of 7.0
+- Update to use last limine version, instead of 7.0
+- Fix the readme to be cleaner
 
 # Design
 well, let me tell you a bit more about the design I want to follow to build this Os.
