@@ -172,6 +172,8 @@ fn main() {
                 "-display",
                 "gtk",
                 "-no-reboot",
+                "--smp",
+                "3",
             ])
             .status()
             .expect("Failed to execute QEMU emulator");
@@ -181,4 +183,3 @@ fn main() {
         }
     }
 }
-

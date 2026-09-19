@@ -9,6 +9,8 @@ Based upon "Kernel - RustOs" tutorial, and many other things.
 # Roadmap
 - [X] Boot
 - [X] Debug in terminal
+- [X] Run multiple cpus
+- [ ] Handle exception, avoid triple fault
 - [ ] Handle memory and interrupts
 - [ ] Make all the component, entity, and systems lib
 - [ ] Make a CLI

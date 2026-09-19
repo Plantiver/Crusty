@@ -2,8 +2,9 @@
 CARGO        := cargo
 DIR          := src
 BUILDER      := builder
+KERNEL		 := kernel
 
-.PHONY: all run build clean fmt
+.PHONY: all run build clean fmt part
 
 # Default target when you type 'make'
 all: build
@@ -19,6 +20,10 @@ run:
 # Cleans up build artifacts for the whole workspace
 clean:
 	cd $(DIR) && $(CARGO) clean
+	rm src/crusty.iso
 
 fmt:
 	cd $(DIR) && $(CARGO) fmt
+
+part:
+	cd $(DIR) && $(CARGO) build -p $(KERNEL) --target x86_64-unknown-none
