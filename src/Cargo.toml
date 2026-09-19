@@ -2,6 +2,7 @@
 members = [
 	"builder",
 	"kernel",
-	"lib"
+	"lib",
+	"limine-bootloader"
 ]
 resolver="3"

@@ -6,3 +6,10 @@ edition = "2024"
 [dependencies]
 lib = {path = "../lib"}
 limine = "0.6"
+
+[target.x86_64-unknown-none]
+rustflags = [
+    "-C", "link-arg=-Tlinker.ld",
+    "-C", "relocation-model=pic",
+    "-C", "code-model=kernel"
+]

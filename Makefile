@@ -1,6 +1,6 @@
 # Paths and configuration variables
 CARGO        := cargo
-DIR := src
+DIR          := src
 BUILDER      := builder
 
 .PHONY: all run build clean fmt
@@ -8,12 +8,13 @@ BUILDER      := builder
 # Default target when you type 'make'
 all: build
 
-# Runs your host-side builder pipeline using the explicit path
+# Runs your host-side builder pipeline normally
 build:
 	cd $(DIR) && $(CARGO) run -p $(BUILDER)
 
-# Alias for running the build pipeline
-run: build
+# Triggers the builder pipeline and passes the 'run' parameter to handle QEMU execution
+run:
+	cd $(DIR) && $(CARGO) run -p $(BUILDER) -- run
 
 # Cleans up build artifacts for the whole workspace
 clean:
@@ -21,4 +22,3 @@ clean:
 
 fmt:
 	cd $(DIR) && $(CARGO) fmt
-
